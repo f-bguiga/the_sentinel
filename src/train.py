@@ -4,6 +4,7 @@ import mlflow.sklearn
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score
+from src.features import engineer_features
 import subprocess
 import sys
 import os
@@ -27,7 +28,7 @@ def main():
         df = pd.read_csv("data/raw/transactions.csv")
         
         # Simple Preprocessing
-        X = df[["amount"]] 
+        X = engineer_features(df) 
         y = df["is_fraud"]
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
