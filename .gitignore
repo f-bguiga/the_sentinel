@@ -1,4 +1,18 @@
+# Python
 venv/
-.DS_Store
 __pycache__/
 *.pyc
+
+# Data (DVC handles these)
+data/raw/*
+!data/raw/.gitignore
+!data/raw/*.dvc
+
+# MLflow
+mlflow.db
+artifacts/
+mlruns/
+
+# Environment/Secrets
+.env
+.DS_Store
