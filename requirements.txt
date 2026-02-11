@@ -1,1 +1,7 @@
-pip freeze | grep mlflow >> requirements.txt
+pandas
+mlflow
+scikit-learn
+fastapi
+uvicorn
+evidently
+great_expectations

@@ -3,16 +3,16 @@ venv/
 __pycache__/
 *.pyc
 
-# Data (DVC handles these)
+# Data (DVC handles the actual CSVs)
 data/raw/*
 !data/raw/.gitignore
 !data/raw/*.dvc
 
-# MLflow
+# MLflow Metadata (We don't want local DBs in Git)
+mlruns/
 mlflow.db
 artifacts/
-mlruns/
 
-# Environment/Secrets
-.env
+# System
 .DS_Store
+.env

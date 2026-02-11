@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  # The MLflow Tracking Server
+  mlflow:
+    image: ghcr.io/mlflow/mlflow
+    ports:
+      - "5000:5000"
+    command: >
+      mlflow server  --host 0.0.0.0  --port 5000  --allowed-hosts "*"
+
+  # Our Sentinel API
+  sentinel_api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    depends_on:
+      - mlflow
