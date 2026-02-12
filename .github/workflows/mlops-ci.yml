@@ -31,6 +31,22 @@ jobs:
         echo "2,99000.0,1" >> data/raw/transactions.csv
         echo "3,50.0,0" >> data/raw/transactions.csv
         echo "4,85000.0,1" >> data/raw/transactions.csv
-  
-    # - name: 🧐 Run Data Validation (GX)
-    # run: python src/setup_gx.py
+
+    - name: 🧐 Run Data Validation (GX)
+      run: python src/setup_gx.py
+
+    - name: 🧪 Train Dummy Model for Testing
+      env:
+        PYTHONPATH: .
+        MLFLOW_TRACKING_URI: sqlite:///mlflow.db
+      run: |
+        # Train a small model so pytest has something to look at
+        python -m src.train
+        # Promote it so the 'champion' alias exists locally in the SQLite db
+        python -m src.promote_model
+
+    - name: 🛡️ Run Model Logic Tests (Pytest)
+      env:
+        PYTHONPATH: .
+        MLFLOW_TRACKING_URI: sqlite:///mlflow.db
+      run: pytest tests/test_model.py
