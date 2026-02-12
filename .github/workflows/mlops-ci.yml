@@ -49,4 +49,4 @@ jobs:
       env:
         PYTHONPATH: .
         MLFLOW_TRACKING_URI: sqlite:///mlflow.db
-      run: pytest tests/test_model.py
+      run: python -m pytest tests/test_model.py
