@@ -1,3 +1,4 @@
+[![Sentinel CI Pipeline](https://github.com/f-bguiga/the_sentinel/actions/workflows/mlops-ci.yml/badge.svg)](https://github.com/f-bguiga/the_sentinel/actions/workflows/mlops-ci.yml)
 🛡️ Project: The Sentinel
 
 Production-Grade Fraud Detection with Automated Governance & Shadow Deployments
