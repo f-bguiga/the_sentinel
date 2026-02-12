@@ -5,3 +5,5 @@ fastapi
 uvicorn
 evidently
 great_expectations
+pytest
+requests
